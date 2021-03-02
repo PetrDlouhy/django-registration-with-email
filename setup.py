@@ -11,7 +11,7 @@ except ImportError:
 
 
 def get_version(*file_paths):
-    """Retrieves the version from django_registration_email/__init__.py"""
+    """Retrieves the version from django_registration_with_email/__init__.py"""
     filename = os.path.join(os.path.dirname(__file__), *file_paths)
     version_file = open(filename).read()
     version_match = re.search(r"^__version__ = ['\"]([^'\"]*)['\"]",
@@ -21,7 +21,7 @@ def get_version(*file_paths):
     raise RuntimeError('Unable to find version string.')
 
 
-version = get_version("django_registration_email", "__init__.py")
+version = get_version("django_registration_with_email", "__init__.py")
 
 
 if sys.argv[-1] == 'publish':
@@ -46,21 +46,21 @@ history = open('HISTORY.rst').read().replace('.. :changelog:', '')
 requirements = open('requirements.txt').readlines()
 
 setup(
-    name='django-registration-email',
+    name='django-registration-with-email',
     version=version,
     description="""Override Django-registration to log in by e-mail""",
     long_description=readme + '\n\n' + history,
     author='Petr Dlouhý',
     author_email='petr.dlouhy@email.cz',
-    url='https://github.com/PetrDlouhy/django-registration-email',
+    url='https://github.com/PetrDlouhy/django-registration-with-email',
     packages=[
-        'django_registration_email',
+        'django_registration_with_email',
     ],
     include_package_data=True,
     install_requires=requirements,
     license="MIT",
     zip_safe=False,
-    keywords='django-registration-email',
+    keywords='django-registration-with-email',
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Framework :: Django :: 1.11',

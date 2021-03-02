@@ -1,15 +1,15 @@
 =============================
-Django registration email
+Django registration with email
 =============================
 
-.. image:: https://badge.fury.io/py/django-registration-email.svg
-    :target: https://badge.fury.io/py/django-registration-email
+.. image:: https://badge.fury.io/py/django-registration-with-email.svg
+    :target: https://badge.fury.io/py/django-registration-with-email
 
-.. image:: https://travis-ci.org/PetrDlouhy/django-registration-email.svg?branch=master
-    :target: https://travis-ci.org/PetrDlouhy/django-registration-email
+.. image:: https://travis-ci.org/PetrDlouhy/django-registration-with-email.svg?branch=master
+    :target: https://travis-ci.org/PetrDlouhy/django-registration-with-email
 
-.. image:: https://codecov.io/gh/PetrDlouhy/django-registration-email/branch/master/graph/badge.svg
-    :target: https://codecov.io/gh/PetrDlouhy/django-registration-email
+.. image:: https://codecov.io/gh/PetrDlouhy/django-registration-with-email/branch/master/graph/badge.svg
+    :target: https://codecov.io/gh/PetrDlouhy/django-registration-with-email
 
 Override (django-registration)[https://github.com/ubernostrum/django-registration] to log-in by e-mail.
 This package provides:
@@ -25,14 +25,14 @@ using captcha on the form, but still you should evaluate if this is secure enoug
 Documentation
 -------------
 
-The full documentation is at https://django-registration-email.readthedocs.io.
+The full documentation is at https://django-registration-with-email.readthedocs.io.
 
 Quickstart
 ----------
 
-Install Django registration email::
+Install Django registration with email::
 
-    pip install django-registration-email
+    pip install django-registration-with-email
 
 Add it to your `INSTALLED_APPS`:
 
@@ -41,21 +41,19 @@ Add it to your `INSTALLED_APPS`:
     INSTALLED_APPS = (
         ...
         'django_registration',
-        'django_registration_email',
+        'django_registration_with_email',
         'captcha',
         ...
     )
 
-Add Django registration email's URL patterns:
+Add Django registration with email's URL patterns:
 
 .. code-block:: python
-
-    from django_registration_email import urls as django_registration_email_urls
 
 
     urlpatterns = [
         ...
-        url(r'^', include(django_registration_email_urls)),
+        url(r'^', include('django_registration_with_email.urls')),
         ...
     ]
 
