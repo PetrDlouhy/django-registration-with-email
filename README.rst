@@ -13,10 +13,11 @@ Django registration with email
 
 Override (django-registration)[https://github.com/ubernostrum/django-registration] to log-in by e-mail.
 This package provides:
- - Log-in with e-mail or username
- - User-convenient messages for various cases in login and password reset form
- - Send password reset e-mail even for users without password
- - Includes phishing-safe next_url mechanism
+
+- Log-in with e-mail or username
+- User-convenient messages for various cases in login and password reset form
+- Send password reset e-mail even for users without password
+- Includes phishing-safe next_url mechanism
 
 Security note: For better user experience the password reset form informs users if the e-mail doesn't exist in the system.
 This lowers security, because attacker can query the system whether the account exists or not. The risk is lowered by
