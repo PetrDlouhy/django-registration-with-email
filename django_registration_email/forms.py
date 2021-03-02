@@ -2,10 +2,10 @@ from captcha.fields import CaptchaField
 from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import AuthenticationForm, PasswordResetForm
-from django.db import models
 from django.urls import reverse
 from django.utils.html import format_html
 from django.utils.translation import ugettext_lazy as _
+from django_registration.forms import RegistrationFormUniqueEmail
 
 User = get_user_model()
 
@@ -24,7 +24,10 @@ def get_user_by_email(email):
         except User.MultipleObjectsReturned:
             user = User.objects.filter(email__exact=email).get()
         except User.DoesNotExist:
-            user = None
+            try:
+                user = User.objects.filter(username__exact=email, is_active=True).get()
+            except User.DoesNotExist:
+                user = User.objects.filter(username__exact=email).get()
     return user
 
 
@@ -84,3 +87,13 @@ class LoginForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['username'].label = "Username or e-mail"
+
+
+class FullUserRegistrationForm(RegistrationFormUniqueEmail):
+    class Meta(RegistrationFormUniqueEmail.Meta):
+        model = User
+        fields = [
+            'email',
+            'password1',
+            'password2',
+        ]
