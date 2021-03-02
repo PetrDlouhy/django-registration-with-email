@@ -1,13 +1,11 @@
 from django.conf.urls import include
 from django.contrib.auth.views import LoginView, PasswordResetView
-from django.urls import path
-from django.urls import reverse_lazy
+from django.urls import path, reverse_lazy
 from django_registration.backends.activation.views import RegistrationView
 from django_registration.forms import RegistrationFormUniqueEmail
 
-from .forms import REPasswordResetForm, LoginForm
+from .forms import LoginForm, REPasswordResetForm
 from .views import NextURLActivationView
-
 
 urlpatterns = [
     path(
