@@ -11,7 +11,16 @@ Django registration email
 .. image:: https://codecov.io/gh/PetrDlouhy/django-registration-email/branch/master/graph/badge.svg
     :target: https://codecov.io/gh/PetrDlouhy/django-registration-email
 
-Override (django-registration)[https://github.com/ubernostrum/django-registration] to log in by e-mail
+Override (django-registration)[https://github.com/ubernostrum/django-registration] to log-in by e-mail.
+This package provides:
+ - Log-in with e-mail or username
+ - User-convenient messages for various cases in login and password reset form
+ - Send password reset e-mail even for users without password
+ - Includes phishing-safe next_url mechanism
+
+Security note: For better user experience the password reset form informs users if the e-mail doesn't exist in the system.
+This lowers security, because attacker can query the system whether the account exists or not. The risk is lowered by
+using captcha on the form, but still you should evaluate if this is secure enough for your system.
 
 Documentation
 -------------
@@ -31,7 +40,9 @@ Add it to your `INSTALLED_APPS`:
 
     INSTALLED_APPS = (
         ...
+        'django_registration',
         'django_registration_email',
+        'captcha',
         ...
     )
 
@@ -47,6 +58,19 @@ Add Django registration email's URL patterns:
         url(r'^', include(django_registration_email_urls)),
         ...
     ]
+
+Set email as unique=True in your User model:
+
+.. code-block:: python
+
+   class User(TimeStampedModel, AbstractUser):
+      email = models.EmailField(
+        verbose_name='email address',
+        max_length=254,
+        blank=True,
+        null=True,
+        unique=True,
+    )
 
 Features
 --------

@@ -1,12 +1,18 @@
 from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import AuthenticationForm, PasswordResetForm
+from django.db import models
 from django.urls import reverse
 from django.utils.html import format_html
 from django.utils.translation import ugettext_lazy as _
 
+from captcha.fields import CaptchaField
+
 
 User = get_user_model()
+
+User.USERNAME_FIELD = 'email'
+User.REQUIRED_FIELDS = ['username']
 
 
 def get_user_by_email(email):
@@ -25,6 +31,7 @@ def get_user_by_email(email):
 
 
 class REPasswordResetForm(PasswordResetForm):
+    captcha = CaptchaField()
 
     def clean_email(self):
         """
@@ -50,7 +57,9 @@ class REPasswordResetForm(PasswordResetForm):
                 user.password = User.objects.make_random_password()
                 user.save()
         else:
-            raise forms.ValidationError("We don't have this e-mail in our system. Please check if you registered with this e-mail")
+            raise forms.ValidationError(
+                "We don't have this e-mail in our system. Please check if you registered with this e-mail",
+            )
 
         return email
 
@@ -73,3 +82,7 @@ class LoginForm(AuthenticationForm):
                 ),
             )
         return user.email
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['username'].label = "Username or e-mail"

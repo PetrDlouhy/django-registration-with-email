@@ -1,2 +1,4 @@
 
+django-next-url-mixin
+django-simple-captcha
 # Additional requirements go here
