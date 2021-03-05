@@ -11,7 +11,7 @@ Django registration with email
 .. image:: https://codecov.io/gh/PetrDlouhy/django-registration-with-email/branch/master/graph/badge.svg
     :target: https://codecov.io/gh/PetrDlouhy/django-registration-with-email
 
-Override (django-registration)[https://github.com/ubernostrum/django-registration] to log-in by e-mail.
+Override `django-registration <https://github.com/ubernostrum/django-registration>` to log-in by e-mail.
 This package provides:
 
 - Log-in with e-mail or username
