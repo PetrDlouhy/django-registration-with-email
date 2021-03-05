@@ -1,6 +1,6 @@
-=============================
+==============================
 Django registration with email
-=============================
+==============================
 
 .. image:: https://badge.fury.io/py/django-registration-with-email.svg
     :target: https://badge.fury.io/py/django-registration-with-email
