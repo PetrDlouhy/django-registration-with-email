@@ -1,4 +1,4 @@
-## Example Project for django_registration_email
+## Example Project for django_registration_with_email
 
 This example is provided as a convenience feature to allow potential users to try the app straight from the app repo without having to create a django project.
 

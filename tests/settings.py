@@ -30,9 +30,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'django_registration_email',
+    'django_registration_with_email',
     
-    'django_registration_email.test_utils.test_app'
+    'django_registration_with_email.test_utils.test_app'
     
 
     # if your app has other dependencies that need to be added to the site

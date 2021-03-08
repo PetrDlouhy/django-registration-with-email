@@ -37,7 +37,7 @@ def coverage(c):
     """
     check code coverage quickly with the default Python
     """
-    c.run("coverage run --source django-registration-email runtests.py tests")
+    c.run("coverage run --source django-registration-with-email runtests.py tests")
     c.run("coverage report -m")
     c.run("coverage html")
     c.run("open htmlcov/index.html")
@@ -48,9 +48,9 @@ def docs(c):
     """
     Build the documentation and open it in the browser
     """
-    c.run("rm -f docs/django-registration-email.rst")
+    c.run("rm -f docs/django-registration-with-email.rst")
     c.run("rm -f docs/modules.rst")
-    c.run("sphinx-apidoc -o docs/ django_registration_email")
+    c.run("sphinx-apidoc -o docs/ django_registration_with_email")
 
     c.run("sphinx-build -E -b html docs docs/_build")
     open_browser(path='docs/_build/html/index.html')
@@ -86,7 +86,7 @@ def lint(c):
     """
     Check style with flake8
     """
-    c.run("flake8 django-registration-email tests")
+    c.run("flake8 django-registration-with-email tests")
 
 
 @task(help={'bumpsize': 'Bump either for a "feature" or "breaking" change'})
@@ -100,10 +100,10 @@ def release(c, bumpsize=''):
 
     c.run("bumpversion {bump} --no-input".format(bump=bumpsize))
 
-    import django_registration_email
+    import django_registration_with_email
     c.run("python setup.py sdist bdist_wheel")
     c.run("twine upload dist/*")
 
-    c.run('git tag -a {version} -m "New version: {version}"'.format(version=django_registration_email.__version__))
+    c.run('git tag -a {version} -m "New version: {version}"'.format(version=django_registration_with_email.__version__))
     c.run("git push --tags")
     c.run("git push origin master")

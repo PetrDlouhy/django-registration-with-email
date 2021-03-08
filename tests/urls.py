@@ -6,5 +6,5 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', include('django_registration_email.urls', namespace='django_registration_email')),
+    url(r'^', include('django_registration_with_email.urls', namespace='django_registration_with_email')),
 ]
