@@ -42,7 +42,7 @@ urlpatterns = [
         name='auth_login',
     ),
     path(
-        'password/reset/',
+        'password_reset/',
         PasswordResetView.as_view(
             success_url=reverse_lazy('password_reset_done'),
             form_class=REPasswordResetForm,
