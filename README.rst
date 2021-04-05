@@ -42,7 +42,7 @@ Add it to your `INSTALLED_APPS`:
 
     INSTALLED_APPS = (
         ...
-        'django_registration',
+        'registration',
         'django_registration_with_email',
         'captcha',
         ...
@@ -55,7 +55,8 @@ Add Django registration with email's URL patterns:
 
     urlpatterns = [
         ...
-        url(r'^', include('django_registration_with_email.urls')),
+        path('accounts/', include('django_registration_with_email.urls')),
+        path('accounts/', include('registration.backends.default.urls')),
         ...
     ]
 

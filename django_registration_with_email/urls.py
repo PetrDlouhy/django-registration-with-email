@@ -2,7 +2,7 @@ from django.conf.urls import include
 from django.contrib.auth.views import LoginView, PasswordResetView
 from django.urls import path, reverse_lazy
 from django.views.generic.base import TemplateView
-from registration.backends.default.views import RegistrationView
+from registration.backends.default.views import RegistrationView, ResendActivationView
 
 from .forms import LoginForm, REPasswordResetForm, FullUserRegistrationForm
 from .views import NextURLActivationView
@@ -15,6 +15,11 @@ urlpatterns = [
             template_name='registration/activation_complete.html',
         ),
         name='registration_activation_complete',
+    ),
+    path(
+        'activate/resend/',
+        ResendActivationView.as_view(),
+        name='registration_resend_activation',
     ),
     path(
         'accounts/register/',
