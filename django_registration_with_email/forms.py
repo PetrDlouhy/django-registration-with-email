@@ -27,7 +27,10 @@ def get_user_by_email(email):
             try:
                 user = User.objects.filter(username__exact=email, is_active=True).get()
             except User.DoesNotExist:
-                user = User.objects.filter(username__exact=email).get()
+                try:
+                    user = User.objects.filter(username__exact=email).get()
+                except User.DoesNotExist:
+                    user = None
     return user
 
 
