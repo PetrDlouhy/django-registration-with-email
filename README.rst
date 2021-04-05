@@ -11,7 +11,7 @@ Django registration with email
 .. image:: https://codecov.io/gh/PetrDlouhy/django-registration-with-email/branch/master/graph/badge.svg
     :target: https://codecov.io/gh/PetrDlouhy/django-registration-with-email
 
-Override `django-registration <https://github.com/ubernostrum/django-registration>`_ to log-in by e-mail.
+Override `django-registration-redux <https://github.com/macropin/django-registration>`_ to log-in by e-mail.
 This package provides:
 
 - Log-in with e-mail or username
@@ -33,6 +33,7 @@ Quickstart
 
 Install Django registration with email::
 
+    pip install django-registration-redux
     pip install django-registration-with-email
 
 Add it to your `INSTALLED_APPS`:

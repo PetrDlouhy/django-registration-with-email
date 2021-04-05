@@ -5,7 +5,7 @@ from django.contrib.auth.forms import AuthenticationForm, PasswordResetForm
 from django.urls import reverse
 from django.utils.html import format_html
 from django.utils.translation import ugettext_lazy as _
-from django_registration.forms import RegistrationFormUniqueEmail
+from registration.forms import RegistrationFormUniqueEmail
 
 User = get_user_model()
 
